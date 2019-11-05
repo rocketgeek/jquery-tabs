@@ -32,6 +32,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
+
 // Make sure the class is only loaded once.
 if ( ! class_exists( 'RocketGeek_jQuery_Tabs' ) ):
 /**
