@@ -5,8 +5,8 @@
  * Provides a class to invoke jQuery UI tabs for use in WordPress
  * plugins and themes.  See the readme.md for initial instructions.
  *
- * This library is open source and Apache-2.0 licensed. I hope you find it useful
- * for your project(s). Attribution is appreciated ;-)
+ * This library is open source and Apache-2.0 licensed. I hope you find it 
+ * useful for your project(s). Attribution is appreciated ;-)
  *
  * @package    RocketGeek_jQuery_Tabs
  * @version    1.1.0
