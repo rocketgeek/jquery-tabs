@@ -9,7 +9,7 @@
  * for your project(s). Attribution is appreciated ;-)
  *
  * @package    RocketGeek_jQuery_Tabs
- * @version    1.0.0
+ * @version    1.1.0
  *
  * @link       https://github.com/rocketgeek/jquery_tabs/
  * @author     Chad Butler <https://butlerblog.com>

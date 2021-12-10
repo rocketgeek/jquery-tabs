@@ -9,7 +9,7 @@
  * for your project(s). Attribution is appreciated ;-)
  *
  * @package    RocketGeek_jQuery_Tabs
- * @version    1.0.0
+ * @version    1.1.0
  *
  * @link       https://github.com/rocketgeek/jquery_tabs/
  * @author     Chad Butler <https://butlerblog.com>
@@ -31,6 +31,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit();
