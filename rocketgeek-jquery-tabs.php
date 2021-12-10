@@ -57,6 +57,14 @@ class RocketGeek_jQuery_Tabs {
 	public static $stem = "rktgk_";
 	
 	/**
+	 * Default ID tag.
+	 *
+	 * @since 1.1.0
+	 * @apram string
+	 */
+	public static $tag = 'rktgk-tabs';
+	
+	/**
 	 * Initialize the class.
 	 *
 	 * @since 1.0.0
@@ -98,8 +106,8 @@ class RocketGeek_jQuery_Tabs {
 		$jquery_ui_style = apply_filters( self::$stem . 'jquery_ui_style', plugin_dir_url( __FILE__ ) . 'assets/css/jquery-ui.min.css' );
 		wp_enqueue_style ( 'jquery-ui-style' );
 		
-		//wp_register_style( 'rktgk-ui-tabs', plugin_dir_url( __FILE__ ) . 'assets/css/rktgk-tabs.css' );
-		//wp_enqueue_style ( 'rktgk-ui-tabs' );
+		wp_register_style( self::$tag . '-ui-tabs', plugin_dir_url( __FILE__ ) . 'assets/css/rktgk-tabs.css' );
+		wp_enqueue_style ( self::$tag . '-ui-tabs' );
 	}
 	
 	/**
@@ -111,11 +119,9 @@ class RocketGeek_jQuery_Tabs {
 	 *    @type string $tab     (required)
 	 *    @type string $content (optional)
 	 * }
-	 * @param  string  $tag (default:default)
+	 * @param  boolean $echo True echos the result, false returns as string (default:true)
 	 */
-	public static function tabs( $tabs, $tag = 'rktgk_tabs', $echo = true ) {
-		
-		$tag = ( '' == $tag ) ? 'rktgk_tabs' : $tag;
+	public static function tabs( $tabs, $echo = true ) {
 		
 		/**
 		 * Load a set of tabs.
@@ -128,52 +134,26 @@ class RocketGeek_jQuery_Tabs {
 		 * }
 		 * @param string $tag
 		 */
-		$tabs = apply_filters( self::$stem . 'jquery_tabs', $tabs, $tag ); 
+		$tabs = apply_filters( self::$stem . 'jquery_tabs', $tabs, self::$tag ); 
 
 		if ( ! empty( $tabs ) ) { 
 			
 			$html = '
-<style>
-	#' . $tag . '{ 
-		padding: 0px; 
-		background: none; 
-		border-width: 0px; 
-	} 
-	#' . $tag . ' .ui-tabs-nav { 
-		padding-left: 0px; 
-		background: transparent; 
-		border-width: 0px 0px 1px 0px; 
-		-moz-border-radius: 0px; 
-		-webkit-border-radius: 0px; 
-		border-radius: 0px; 
-	} 
-	#' . $tag . ' .ui-tabs-panel { 
-		background: #fff; 
-		border-width: 0px 1px 1px 1px; 
-	}
-	#' . $tag . ' .ui-state-active {
-		border: 1px solid #006799; 
-		background: #008ec2;
-	}
-	#' . $tag . ' .ui-state-active a {
-		color: #fff;
-	}
-</style>
 <script>
 	jQuery(document).ready(function($){
-		$("#' . $tag . '").tabs();
+		$("#' . self::$tag . '").tabs();
 	});
 </script>';
-			$html .= '<div id="' . esc_attr( $tag ) . '">';
+			$html .= '<div id="' . esc_attr( self::$tag ) . '">';
 			$html .= '<ul>';
 			foreach ( $tabs as $key => $value ) {
-				$id = "#" . $tag . "-" . $key;
+				$id = "#" . self::$tag . "-" . $key;
 				$class = ( isset( $_GET['ui-tabs-active'] ) && $key == $_GET['ui-tabs-active'] ) ? ' class="ui-tabs-active ui-state-active"' : '';
 				$html .= '<li' . $class . '><a href="' . esc_attr( $id ) . '">' . esc_html( $value['tab'] ) . '</a></li>';
 			}
 			$html .= '</ul>';
 			foreach ( $tabs as $key => $value ) {
-				$id = $tag . "-" . $key;
+				$id = self::$tag . "-" . $key;
 				$html .= '<div id="' . esc_attr( $id ) . '">';
 				
 				$content = ( isset( $value['content'] ) ) ? $value['content'] : '';
@@ -187,7 +167,7 @@ class RocketGeek_jQuery_Tabs {
 				 * @param string $key
 				 * @param string $tag
 				 */
-				$html .= apply_filters( self::$stem . 'jquery_tabs_content', $content, $key, $tag );
+				$html .= apply_filters( self::$stem . 'jquery_tabs_content', $content, $key, self::$tag );
 				
 				$html .= '</div>';
 			}
