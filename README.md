@@ -19,7 +19,7 @@ The library relies on jQuery UI. It enqueues jQuery and jQuery UI Core using `wp
 Copy the entire rocketgeek-jquery-tabs folder to your project. I like to do this in an "includes" subdirectory. For example:
 
 ```
-include_once( YOUR_PLUGIN_PATH . 'includes/libraries/rocketgeek-jquery-tabs/rocketgeek-jquery-tabs.php' );
+include_once YOUR_PLUGIN_PATH . 'includes/libraries/rocketgeek-jquery-tabs/rocketgeek-jquery-tabs.php';
 ```
 
 Once the library is included, you can call it in your project. Define the tabs as an array, and pass that array with the call.

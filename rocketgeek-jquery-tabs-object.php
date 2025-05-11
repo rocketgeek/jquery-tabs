@@ -14,10 +14,10 @@
  * @link       https://github.com/rocketgeek/jquery_tabs/
  * @author     Chad Butler <https://butlerblog.com>
  * @author     RocketGeek <https://rocketgeek.com>
- * @copyright  Copyright (c) 2019-2023 Chad Butler
+ * @copyright  Copyright (c) 2019-2025 Chad Butler
  * @license    Apache-2.0
  *
- * Copyright [2023] Chad Butler, RocketGeek
+ * Copyright [2025] Chad Butler, RocketGeek
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -75,6 +75,15 @@ class RocketGeek_jQuery_Tabs {
 	}
 	
 	/**
+	 * Determine whether to load minified scripts and styles.
+	 * 
+	 * @since 1.2.0
+	 */
+	private function get_suffix() {
+		return ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
+	}
+
+	/**
 	 * Enqueue jQuery
 	 *
 	 * @since 1.0.0
@@ -95,10 +104,10 @@ class RocketGeek_jQuery_Tabs {
 		 *
 		 * @param  string  $jquery_ui_style
 		 */
-		$jquery_ui_style = apply_filters( $this->stem . 'jquery_ui_style', plugin_dir_url( __FILE__ ) . 'assets/css/jquery-ui.min.css' );
+		$jquery_ui_style = apply_filters( $this->stem . 'jquery_ui_style', plugin_dir_url( __FILE__ ) . 'assets/css/jquery-ui' . $this->get_suffix() . '.css' );
 		wp_enqueue_style ( 'jquery-ui-style' );
 		
-		//wp_register_style( 'rktgk-ui-tabs', plugin_dir_url( __FILE__ ) . 'assets/css/rktgk-tabs.css' );
+		//wp_register_style( 'rktgk-ui-tabs', plugin_dir_url( __FILE__ ) . 'assets/css/rktgk-tabs' . $this->get_suffix() . '.css' );
 		//wp_enqueue_style ( 'rktgk-ui-tabs' );
 	}
 	
